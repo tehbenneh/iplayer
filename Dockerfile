@@ -10,7 +10,7 @@ rm -rf /var/lib/apt/lists/* ; mkdir /mnt/MFS ;
 #RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 #EXPOSE 80
 
-#COPY ./run-services /usr/local/bin/run-services
-#RUN chmod -Rv 777 /usr/local/bin/* ;
+COPY ./run-services /usr/local/bin/run-services
+RUN chmod -Rv 777 /usr/local/bin/* ;
 
 CMD ["/usr/local/bin/run-services"]
