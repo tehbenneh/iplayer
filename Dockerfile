@@ -2,9 +2,10 @@ FROM ubuntu:latest
 
 MAINTAINER benharker@mac.com
 RUN touch /etc/apt/sources.list.d/moosefs.list ;
+RUN apt-get update ; apt-get install -y wget ;
 RUN wget -O - http://ppa.moosefs.com/moosefs.key | apt-key add - && echo "deb http://ppa.moosefs.com/moosefs-3/apt/ubuntu/trusty trusty main" > /etc/apt/sources.list.d/moosefs.list ;
-RUN apt-get update ; apt-get install -y moosefs-client moosefs-cli nano nginx wget dialog net-tools python-software-properties software-properties-common;
-RUN apt-add-repository ppa:jon-hedgerows/get-iplayer ; apt-get update ; apt-get install get-iplayer ;
+RUN apt-get update ; apt-get install -y moosefs-client moosefs-cli nano nginx dialog net-tools python-software-properties software-properties-common;
+RUN apt-add-repository ppa:jon-hedgerows/get-iplayer ; apt-get update ; apt-get install -y get-iplayer ;
 rm -rf /var/lib/apt/lists/* ; mkdir /mnt/MFS ;
 #ADD nginx.conf /etc/nginx/
 #RUN echo "daemon off;" >> /etc/nginx/nginx.conf
